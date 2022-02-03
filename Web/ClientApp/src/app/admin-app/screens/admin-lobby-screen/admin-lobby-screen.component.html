@@ -1,0 +1,39 @@
+<div class="main-container">
+  <div class="game-pin-bar">
+    <div class="game-pin-area">
+      <div class="fs-2">Game PIN: {{this.stateService.game.gamePin}}</div>
+    </div>
+  </div>
+  <div class="content-area">
+    <div class="command-panel">
+      <div class="player-number-indicator btn btn-secondary btn-lg no-hover">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="bi bi-person-fill"
+             viewBox="0 0 16 16">
+          <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+        </svg>
+        {{this.stateService.noPlayers}}
+      </div>
+      <a class="btn btn-primary btn-lg" (click)="openAbortConfirmationDialog()">Abort</a>
+      <div class="logo d-lg-block">
+        <p class="display-3">
+          PRA QUIZ
+        </p>
+      </div>
+      <a class="btn btn-primary btn-lg" (click)="manualRefresh()">Refresh</a>
+      <a class="btn btn-primary btn-lg" [class.disabled]="this.stateService.noPlayers===0"
+         (click)="startQuiz()">Start</a>
+      <div class="refresh-indicator">
+        <p class="mb-1">Refreshing automatically in:</p>
+        <p class="fs-3 fw-bold">{{refreshCounter}}..</p>
+      </div>
+    </div>
+    <div class="nickname-area">
+      <div class="nickname-box">
+        <div class="player-name-box btn btn-secondary btn-lg no-hover" *ngFor="let player of stateService.players">
+          {{player.nickname}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

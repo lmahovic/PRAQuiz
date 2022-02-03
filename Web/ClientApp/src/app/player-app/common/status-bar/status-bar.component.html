@@ -1,0 +1,8 @@
+<footer class="d-flex align-items-center footer bg-black text-light justify-content-around"
+        *ngIf="stateService.showStatusBar">
+  <div class="playerName">{{stateService.getPlayer().nickname}}</div>
+  <div *ngIf="stateService.statusBarLobbyEntered" class="question">
+    Question:&nbsp;&nbsp;{{stateService.getCurrentQuestionNumber()}}&nbsp;
+    /&nbsp;{{stateService.getQuestionsAnswersState().length}}</div>
+  <div *ngIf="stateService.statusBarLobbyEntered" class="points">Points:&nbsp;{{stateService.totalPoints}}</div>
+</footer>

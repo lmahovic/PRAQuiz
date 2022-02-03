@@ -1,0 +1,55 @@
+<div>
+  <div class="d-flex flex-column vw-100 main-content">
+    <div class="scoreboard-header d-flex align-items-center justify-content-center">
+      <div
+        class="d-flex align-items-center justify-content-center bg-light w-50 h-75 scoreboard-container display-3 fw-bold">
+        Final scores
+      </div>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-between p-5">
+      <button class="btn btn-secondary btn-lg fs-3">Replay quiz</button>
+      <div class="fs-3">Game Over!</div>
+      <a class="btn btn-primary btn-lg fs-3 ps-5 pe-5" href="#">End quiz</a>
+    </div>
+    <div class="scoreboard-table p-3 m-5 mt-0 overflow-auto">
+      <div class="row p-2 fs-3 fw-bold" *ngFor="let ranking of rankings;let i = index">
+        <div class="col-2 d-flex align-items-center justify-content-center">
+          {{ranking.ranking}}.
+        </div>
+        <div class="col-6 d-flex align-items-center justify-content-center">
+          {{playerNamesById[i]}}
+        </div>
+        <div class="col-4 d-flex align-items-center justify-content-center">
+          <div *ngIf="ranking.ranking==1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#ebba34" class="bi bi-trophy-fill"
+                 viewBox="0 0 16 16">
+              <path
+                d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935z"/>
+            </svg>
+          </div>
+          <div *ngIf="ranking.ranking==2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#cccac6" class="bi bi-trophy-fill"
+                 viewBox="0 0 16 16">
+              <path
+                d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935z"/>
+            </svg>
+          </div>
+          <div *ngIf="ranking.ranking==3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#9e371b" class="bi bi-trophy-fill"
+                 viewBox="0 0 16 16">
+              <path
+                d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935z"/>
+            </svg>
+          </div>
+          <div class="ms-3">
+            {{ranking.totalPoints}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+

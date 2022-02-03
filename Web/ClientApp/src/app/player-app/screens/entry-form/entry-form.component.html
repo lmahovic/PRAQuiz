@@ -1,0 +1,18 @@
+<div class="container">
+  <p class="display-1 mb-5">PRA QUIZ</p>
+  <p class="display-5 mb-5">Player</p>
+  <div class="card p-4 mb-5" style="width: 24rem;">
+    <form #f="ngForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <input type="text" id="parameter" name="inputValue" class="form-control"
+               placeholder="{{parameterName}}" required ngModel #u="ngModel"
+               [class.not-found]="!serverOk && !u.touched"/>
+        <span class="form-text" *ngIf="u.invalid && u.touched">{{parameterName}} must not be empty!</span>
+        <span class="form-text" *ngIf="!serverOk && !u.touched">{{serverErrorMessage}}</span>
+      </div>
+      <button class="btn btn-primary form-control" [disabled]="f.invalid">Enter</button>
+    </form>
+  </div>
+</div>
+
+

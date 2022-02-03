@@ -1,0 +1,12 @@
+.question-area {
+  background-color: gainsboro;
+  min-height: 15rem;
+}
+
+.buttons {
+  min-width: 20rem;
+}
+
+*{
+  overflow: hidden;
+}

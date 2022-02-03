@@ -1,0 +1,17 @@
+<div>
+  <div class="text-center mb-5">
+    <h3>{{question === undefined ? "" : question.questionText}}</h3>
+  </div>
+
+  <div>
+    <div class="row d-flex align-items-center mb-xl-5">
+      <div class="col-lg-6" *ngFor="let answer of question.answers; index as i;">
+        <app-answer-element [answer]="answer" (click)="processAnswer(answer.id)">
+        </app-answer-element>
+      </div>
+    </div>
+  </div>
+  <div class="text-center mb-5">
+    <h3>Remaining time: {{remainingTime}}</h3>
+  </div>
+</div>

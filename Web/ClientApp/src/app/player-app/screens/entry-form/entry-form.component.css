@@ -1,0 +1,9 @@
+* {
+  text-align: center;
+}
+
+
+
+input.ng-invalid.ng-touched, input.not-found{
+  border: 1px solid red;
+}

@@ -1,0 +1,54 @@
+<div>
+  <div class="d-flex flex-column p-2 p-lg-5 vw-100">
+    <div class="d-flex align-items-center justify-content-center row">
+      <div class="col-6 d-flex align-items-center justify-content-around mb-3 buttons">
+        <div class="fs-3 fw-bold ms-3">RESULTS</div>
+        <div class="btn btn-primary btn-lg me-3" (click)="goToRankings()">Continue</div>
+      </div>
+    </div>
+    <div class="row d-flex align-items-center justify-content-between">
+      <div
+        class="d-flex align-items-center justify-content-center text-center mb-3 col-lg-6 col-12 question-area order-lg-2">
+        <h3>{{question.questionText}}</h3>
+      </div>
+      <div class="mb-lg-5 col-lg-3 col-6 order-lg-1">
+        <div class="row">
+          <div class="col-12">
+            <app-admin-result-card [answer]="question.answers[0]">
+            </app-admin-result-card>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <app-admin-result-card *ngIf="question.answers.length>2" [answer]="question.answers[2]">
+            </app-admin-result-card>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mb-lg-5 col-lg-3 col-6 order-lg-3">
+        <div class="row">
+          <div class="col-12">
+            <app-admin-result-card [answer]="question.answers[1]">
+            </app-admin-result-card>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <app-admin-result-card *ngIf="question.answers.length>3" [answer]="question.answers[3]">
+            </app-admin-result-card>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-around mt-lg-5"></div>
+    <div class="row d-flex align-items-center mb-xl-5">
+      <div class="col-lg-6" *ngFor="let answer of question.answers; index as i;">
+        <app-admin-answer-element class="passiveAnswerElement" [answer]="answer" [isResultView]="true">
+        </app-admin-answer-element>
+      </div>
+    </div>
+
+  </div>
+</div>

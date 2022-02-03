@@ -1,0 +1,17 @@
+<div class="text-center">
+
+  <p class="display-3 mb-5">Select your quiz:</p>
+  <div class="d-flex justify-content-around mb-5 flex-grow-1">
+    <div>
+      <select class="form-select fs-4 me-5" aria-label="Default select example" #t (change)=selectQuiz(t.value)>
+        <option *ngFor="let quiz of stateService.quizzes;first as isFirst"
+                [selected]="isFirst" value="{{quiz.id}}">
+          {{quiz.title}}
+        </option>
+      </select>
+    </div>
+    <div>
+      <button class="btn btn-primary btn-lg" (click)="confirmQuizSelection()">Confirm</button>
+    </div>
+  </div>
+</div>

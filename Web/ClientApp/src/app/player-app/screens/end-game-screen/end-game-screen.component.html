@@ -1,0 +1,6 @@
+<div class="text-center">
+  <div class="display-1 mb-5" >GAME OVER<span></span></div>
+  <div class="display-5 mb-3" *ngIf="showRank">Rank:&nbsp;&nbsp;<span class="fw-bold">{{playerRanking.ranking}}</span> </div>
+  <div class="display-5 mb-5" *ngIf="showRank">Total points:&nbsp;&nbsp;<span class="fw-bold">{{playerRanking.totalPoints}}</span></div>
+  <a class="btn btn-primary btn-lg display-3" href="">Return to start</a>
+</div>

@@ -1,0 +1,18 @@
+.main-content {
+  height: 100vh;
+}
+
+.scoreboard-header {
+  height: 10rem;
+  background-color: gray;
+}
+
+.scoreboard-container {
+  min-width: 25rem;
+}
+
+.scoreboard-table {
+  height: 50vh;
+  border: black solid 1px;
+
+}
