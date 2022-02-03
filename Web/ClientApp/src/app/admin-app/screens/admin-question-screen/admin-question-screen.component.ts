@@ -54,7 +54,7 @@ export class AdminQuestionScreenComponent implements OnInit {
                 (response) => {
                   if (response) {
                     intervalSub.unsubscribe();
-                    this.stateService.isTimeUp = playerAnswers.some(x => x.answerId === null && x.answerTime === this.question.timeLimit);
+                    this.stateService.isTimeUp = playerAnswers.some(x => x.answerId === null);
                     this.stateService.playerQuestionAnswersByQuestion[this.stateService.getCurrentQuestionNumber() - 1] = playerAnswers;
                     this.router.navigate(["admin/info-screen"]);
                   }

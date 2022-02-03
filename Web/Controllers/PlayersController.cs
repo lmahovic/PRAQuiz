@@ -29,7 +29,7 @@ public class PlayersController : ControllerBase
             return BadRequest($"Game {gameId} does not exist!");
         }
         return Ok(_mapper.Map<IEnumerable<PlayerViewModel>>(await _context.Players
-            .Where(x => x.GameId == gameId)
+            .Where(x => x.GameId == gameId && !x.HasQuit)
             .ToListAsync()));
     }
 
@@ -49,7 +49,8 @@ public class PlayersController : ControllerBase
         }
 
         var existingPlayersNicknames = await _context.Players
-            .Where(player => player.GameId == model.GameId)
+            .Where(player => player.GameId == model.GameId &&
+                             !player.HasQuit)
             .Select(player => player.Nickname.ToUpper())
             .ToListAsync();
 

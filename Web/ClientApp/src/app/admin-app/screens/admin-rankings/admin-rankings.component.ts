@@ -60,12 +60,17 @@ export class AdminRankingsComponent implements OnInit {
   }
 
   public processNextQuestionPosts() {
-    this.stateService.postNextPlayerQuestionAnswers().subscribe(
+    this.apiService.getPlayers(this.stateService.game.id).subscribe(
       (response) => {
-        this.stateService.playerQuestionAnswersByQuestion
-          [this.stateService.getCurrentQuestionNumber()] = response;
-        console.log(this.stateService.playerQuestionAnswersByQuestion);
-        this.router.navigate(["admin/next-question"]);
+        this.stateService.players = response;
+        this.stateService.postNextPlayerQuestionAnswers().subscribe(
+          (response) => {
+            this.stateService.playerQuestionAnswersByQuestion
+              [this.stateService.getCurrentQuestionNumber()] = response;
+            console.log(this.stateService.playerQuestionAnswersByQuestion);
+            this.router.navigate(["admin/next-question"]);
+          }
+        );
       }
     );
   }

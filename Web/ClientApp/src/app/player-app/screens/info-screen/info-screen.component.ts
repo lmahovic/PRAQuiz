@@ -34,6 +34,7 @@ export class InfoScreenComponent implements OnInit {
                 (response) => {
                   console.log(response)
                   if (response.finishTime) {
+                    sub.unsubscribe();
                     this.router.navigate(["player/end-game-screen"]);
                   }
                 }
