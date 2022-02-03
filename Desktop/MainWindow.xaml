@@ -1,0 +1,26 @@
+﻿<Window x:Class="PRAQuiz.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PRAQuiz"
+        mc:Ignorable="d"
+        Title="PRA Quiz" Height="650" Width="800" WindowStartupLocation="CenterScreen" WindowState="Normal" WindowStyle="SingleBorderWindow" ResizeMode="CanMinimize">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="120"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+
+        <Button Name="btnSignup" Content="Sign Up" Grid.Row="0" Style="{StaticResource ButtonStyle}" Margin="535,25,172,40" Click="btnSignup_Click"/>
+        <Button Name="btnLogin" Content="Login" Grid.Row="0" Style="{StaticResource ButtonStyle}" Margin="655,25,52,40" Click="btnLogin_Click"/>
+        <Label Content="PRA QUIZ" Grid.Row="1" FontSize="55" FontStyle="Normal" FontWeight="Bold" FontFamily="Cambria"
+               Foreground="#FA4652" HorizontalAlignment="Center"></Label>
+        <Image
+            Source="C:\Users\Korisnik\Desktop\Algebra\PRA\PRAQuiz\playing-cards-311264_1280.png" Grid.Row="2" Height="250" Width="300" VerticalAlignment="Top"></Image>
+
+    </Grid>
+</Window>

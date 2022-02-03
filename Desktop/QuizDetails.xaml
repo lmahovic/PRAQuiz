@@ -1,0 +1,87 @@
+﻿<Window x:Class="PRAQuiz.QuizDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PRAQuiz"
+        mc:Ignorable="d"
+        Title="Quiz Details" Height="800" Width="1100" ResizeMode="NoResize" WindowStyle="SingleBorderWindow" WindowStartupLocation="CenterScreen">
+    <Grid>
+
+
+        <ListView 
+                     HorizontalAlignment="Center" 
+                          SelectedValuePath="ID"
+                      VerticalAlignment="Center"
+                      Width="705"
+                      Height="600"
+                      Margin="295,71,92,98"
+            ItemsSource="{Binding }"
+                   
+                    
+                    
+                    Visibility="Visible" Name="quizDetails" HorizontalContentAlignment="Stretch" BorderThickness="0" Background="{x:Null}" >
+            <ListView.ItemTemplate>
+                <DataTemplate >
+                    <Border BorderBrush="Black" BorderThickness="0" CornerRadius="4" Margin="0,3" Grid.ColumnSpan="4" Background="White">
+                        <Grid Background="White" Margin="0,1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25" />
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="250" />
+
+
+                            </Grid.RowDefinitions>
+                            <StackPanel Orientation="Horizontal"  Grid.Row="0">
+
+                                <Label HorizontalAlignment="Center" Content="Question text" Foreground="#1e3252" FontWeight="Bold"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal"  Grid.Row="1">
+
+                                <TextBlock Text="{Binding Text}" Foreground="#FA4652" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center"  />
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                                <ListView ItemsSource="{Binding Answers}"  Background="{x:Null}" Width="550" Height="250" SelectedValuePath="Id">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate >
+                                            <StackPanel Orientation="Horizontal">
+
+                                                <StackPanel Orientation="Vertical">
+                                                    <Label HorizontalAlignment="Left" Height="25"  Content="Answer" Foreground="#1e3252" FontSize="11" Width="250"  FontWeight="DemiBold"/>
+                                                    <Label Content="{Binding Text}" Height="25" Foreground="#FA4652" FontWeight="Bold"  FontSize="12" HorizontalAlignment="Left" Width="250"  />
+                                                </StackPanel>
+                                                <StackPanel>
+                                                    <Label HorizontalAlignment="Left" Height="25"  Content="Is correct?" Foreground="#1e3252" FontSize="11" Width="200"  FontWeight="DemiBold"/>
+                                                    <Label Content="{Binding Correct}" Height="25"  Foreground="#FA4652" FontWeight="Bold"  FontSize="12" HorizontalAlignment="Left" Width="200"  />
+
+                                                </StackPanel>
+
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackPanel>
+
+
+
+
+
+                        </Grid>
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="5" ShadowDepth="5" />
+                        </Border.Effect>
+
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Label Name="lbQuizName" Foreground="#FA4652" FontWeight="Bold" FontSize="18" Content="Quiz name placeholder" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" Height="34" Width="210"/>
+        <Label Name="lbTimesPlayed" Foreground="#1e3252" FontWeight="Bold" FontSize="15" Content="Times played: " HorizontalAlignment="Left" Margin="20,150,0,0" VerticalAlignment="Top" Width="130"/>
+        <Label Name="lbTotalPlayers" Foreground="#1e3252" FontWeight="Bold" FontSize="15" Content="Total players: " HorizontalAlignment="Left" Margin="20,194,0,0" VerticalAlignment="Top" Width="130"/>
+        <Button Name="btnPlay" Content="Play" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="20,355,0,0" VerticalAlignment="Top" Width="200" Height="35" Click="btnPlay_Click"/>
+        <Button Name="btnEdit" Content="Edit" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="20,420,0,0" VerticalAlignment="Top" Width="200" Height="35" Click="btnEdit_Click"/>
+
+    </Grid>
+</Window>
