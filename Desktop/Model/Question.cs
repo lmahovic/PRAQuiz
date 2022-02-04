@@ -14,25 +14,25 @@ namespace PRAQuiz.Model
         }
         public Question(string text, int quiz_id, int answertimelimit)
         {
-            Text = text;
+            QuestionText = text;
             QuizID = quiz_id;
-            AnswerTimeLimit = answertimelimit;
+            TimeLimit = answertimelimit;
         }
         public Question(string text, int quiz_id, int answertimelimit, int base_id)
         {
-            Text = text;
+            QuestionText = text;
             QuizID = quiz_id;
             ID = base_id;
-            AnswerTimeLimit = answertimelimit;
+            TimeLimit = answertimelimit;
         }
 
-        public Question(ISet<Answer> answers, int quizID, int iD, string text, int answerTimeLimit)
+        public Question( ISet<Answer> answers, int quizID, int iD, string text, int answerTimeLimit)
         {
             Answers = answers;
             QuizID = quizID;
             ID = iD;
-            Text = text;
-            AnswerTimeLimit = answerTimeLimit;
+            QuestionText = text;
+            TimeLimit = answerTimeLimit;
         }
 
         public ISet<Answer> Answers { get; set; }
@@ -40,14 +40,14 @@ namespace PRAQuiz.Model
 
         public int ID { get; set; }
 
-        public string Text { get; set; }
+        public string QuestionText { get; set; }
 
-        public int AnswerTimeLimit { get; set; }
+        public int TimeLimit { get; set; }
 
         public override bool Equals(object obj) => obj is Question q ? q.ID == ID : false;
 
         public override int GetHashCode() => ID.GetHashCode();
 
-        public override string ToString() => $"{ID} {Text} {QuizID} {AnswerTimeLimit}";
+        public override string ToString() => $"{ID} {QuestionText} {QuizID} {TimeLimit}";
     }
 }

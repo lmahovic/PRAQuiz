@@ -59,8 +59,8 @@ namespace PRAQuiz
             cb4.IsChecked = vs1[3];
 
             txtQuestionId.Text = question.ID.ToString();
-            txtQuestionText.Text = question.Text;
-            txtTimeLimit.Text = question.AnswerTimeLimit.ToString();
+            txtQuestionText.Text = question.QuestionText;
+            txtTimeLimit.Text = question.TimeLimit.ToString();
             txtQuizId.Text = question.QuizID.ToString();
         }
 

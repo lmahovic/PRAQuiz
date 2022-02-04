@@ -39,7 +39,7 @@
 
                             <StackPanel Orientation="Horizontal"  Grid.Row="1">
 
-                                <TextBlock Text="{Binding Text}" Foreground="#FA4652" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center"  />
+                                <TextBlock Text="{Binding QuestionText}" Foreground="#FA4652" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center"  />
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Grid.Row="2">
@@ -80,7 +80,7 @@
         <Label Name="lbQuizName" Foreground="#FA4652" FontWeight="Bold" FontSize="18" Content="Quiz name placeholder" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" Height="34" Width="210"/>
         <Label Name="lbTimesPlayed" Foreground="#1e3252" FontWeight="Bold" FontSize="15" Content="Times played: " HorizontalAlignment="Left" Margin="20,150,0,0" VerticalAlignment="Top" Width="130"/>
         <Label Name="lbTotalPlayers" Foreground="#1e3252" FontWeight="Bold" FontSize="15" Content="Total players: " HorizontalAlignment="Left" Margin="20,194,0,0" VerticalAlignment="Top" Width="130"/>
-        <Button Name="btnPlay" Content="Play" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="20,355,0,0" VerticalAlignment="Top" Width="200" Height="35" Click="btnPlay_Click"/>
+        <Button Name="btnPlay" Content="Publish" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="20,355,0,0" VerticalAlignment="Top" Width="200" Height="35" Click="btnPlay_Click"/>
         <Button Name="btnEdit" Content="Edit" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Left" Margin="20,420,0,0" VerticalAlignment="Top" Width="200" Height="35" Click="btnEdit_Click"/>
 
     </Grid>

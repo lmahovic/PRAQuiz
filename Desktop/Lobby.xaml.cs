@@ -37,24 +37,26 @@ namespace PRAQuiz
 
         private void getQuizes()
         {
+           
 
-            try
-            {
-                var quizes = repo.GetQuizes();
-              
-                dataQuiz.ItemsSource = quizes;
-                
+                try
+                {
+                    var quizes = repo.GetQuizes();
 
-               
-            }
-            catch (Exception)
-            {
-
-                MessageBoxResult result = MessageBox.Show("Nije moguće dohvatiti kvizove", "Obavijest", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-            }
-         
+                    dataQuiz.ItemsSource = quizes;
 
 
+
+                }
+                catch (Exception)
+                {
+
+                    MessageBoxResult result = MessageBox.Show("Nije moguće dohvatiti kvizove", "Obavijest", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+
+
+
+            
         }
 
         private void btnPasswordChange_Click(object sender, RoutedEventArgs e)
@@ -76,6 +78,8 @@ namespace PRAQuiz
         {
             try
             {
+
+
                 int idQuiz = int.Parse(dataQuiz.SelectedValue.ToString());
 
                 if (idQuiz!=0)
@@ -92,7 +96,7 @@ namespace PRAQuiz
             catch (Exception)
             {
 
-                throw;
+                MessageBoxResult result = MessageBox.Show("Choose quiz to view details", "Info", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
 
           
@@ -123,7 +127,7 @@ namespace PRAQuiz
 
              
                 MessageBoxResult result = MessageBox.Show("Quiz deleted", "Info", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                getQuizes();
+               
 
             }
             catch (Exception ex)

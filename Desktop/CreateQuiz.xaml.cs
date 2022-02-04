@@ -38,6 +38,7 @@ namespace PRAQuiz
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             string quizTitle = txtQuizTitle.Text;
+           
 
             PRAQuiz.Model.Quiz quiz = new Model.Quiz(quizTitle, 1);
 

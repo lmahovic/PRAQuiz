@@ -13,15 +13,15 @@ namespace PRAQuiz.Repo
 
         ISet<Quiz> GetQuizes();
 
-        ISet<Player> GetPlayers();
+        //ISet<Player> GetPlayers();
 
         ISet<Question> GetQuestions();
 
-        ISet<Game> GetGames();
+        //ISet<Game> GetGames();
 
         ISet<Answer> GetAnswers();
 
-        ISet<Scores> GetScores();
+        //ISet<Scores> GetScores();
 
         int GetPlayersForQuizes(int QuizID);
         void AddScore(Scores s);

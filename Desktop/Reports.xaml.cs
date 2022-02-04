@@ -28,7 +28,7 @@ namespace PRAQuiz
             InitializeComponent();
 
             var quizes = repo.GetQuizes();
-            var games = repo.GetGames();
+            //var games = repo.GetGames();
 
 
 

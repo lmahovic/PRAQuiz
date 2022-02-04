@@ -63,7 +63,7 @@ namespace PRAQuiz
                    
                    
 
-                    Question question = new Question(answers, idQuiz, item.ID, item.Text, item.AnswerTimeLimit);
+                    Question question = new Question(answers, idQuiz, item.ID, item.QuestionText, item.TimeLimit);
 
 
                     questions.Add(question);
@@ -93,15 +93,27 @@ namespace PRAQuiz
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            int idQuestion = int.Parse(quizDetails.SelectedValue.ToString());
 
-            UpdateQuestion updateQuestion = new UpdateQuestion(idQuestion);
-            updateQuestion.Show();
+            try
+            {
+
+                
+                int idQuestion = int.Parse(quizDetails.SelectedValue.ToString());
+
+                UpdateQuestion updateQuestion = new UpdateQuestion(idQuestion);
+                updateQuestion.Show();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Please choose question for update");
+            }
+          
         }
 
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Quiz will start shorlty");
         }
     }
 }

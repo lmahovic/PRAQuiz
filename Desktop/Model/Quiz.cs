@@ -18,19 +18,26 @@ namespace PRAQuiz.Model
         
             AutorID = autor_id;
         }
-        public Quiz(int id, string title, int autorID, int timesplayed)
+
+        public Quiz(int id, string title, int autor_id)
         {
-            Title = title;
-            AutorID = autorID;
-            TimesPlayed = timesplayed;
             ID = id;
+            Title = title;
+
+            AutorID = autor_id;
         }
 
-        public Quiz(ISet<Question> questions, string title, int timesPlayed)
+
+
+        public Quiz(ISet<Question> questions, string title, int id)
         {
             Questions = questions;
             Title = title;
-            TimesPlayed = timesPlayed;
+            ID = id;
+        }
+
+        public Quiz(string title, int autor_id, int id) : this(title, autor_id)
+        {
         }
 
         public ISet<Question> Questions { get; set; }
@@ -40,7 +47,7 @@ namespace PRAQuiz.Model
         public string Title { get; set; }
         public int TimesPlayed { get; set; }
 
-        public override bool Equals(object obj) => obj is Quiz q ? q.ID == ID : false;
+        //public override bool Equals(object obj) => obj is Quiz q ? q.ID == ID : false;
 
         public override int GetHashCode() => ID.GetHashCode();
 

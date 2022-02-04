@@ -98,8 +98,8 @@ namespace PRAQuiz.DAL
             //SQL USER INFORMACIJE ZA SPAJANJE
 
             SqlConnectionStringBuilder csb = new SqlConnectionStringBuilder();
-            csb.InitialCatalog = "PRA_Quiz";
-            csb.DataSource = ".\\SQLEXPRESS";
+            csb.InitialCatalog = "PRAQuiz";
+            csb.DataSource = "(localdb)\\MSSQLLocalDB";
             csb.IntegratedSecurity = true;
 
             return csb.ConnectionString;

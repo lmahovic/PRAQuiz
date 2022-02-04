@@ -25,8 +25,8 @@ namespace PRAQuiz.Repo
             string firstname = row["FirstName"].ToString();
             string lastname = row["LastName"].ToString();
             string email = row["Email"].ToString();
-            string password = row["Passw"].ToString();
-            int id = (int)row["IDAuthor"];
+            string password = row["Password"].ToString();
+            int id = (int)row["ID"];
 
 
             return new Author(email, password, firstname, lastname, id);
@@ -49,10 +49,10 @@ namespace PRAQuiz.Repo
         //GET ANSWERS
         public Answer GetAnswerFromDataRow(DataRow row)
         {
-            string answer = row["Answer"].ToString();
+            string answer = row["AnswerText"].ToString();
             bool correct = (bool)row["Correct"];
             int questionID = (int)row["QuestionID"];
-            int id = (int)row["IDAnswer"];
+            int id = (int)row["ID"];
 
             return new Answer(answer, questionID, id, correct);
         }
@@ -72,10 +72,10 @@ namespace PRAQuiz.Repo
         //GET QUESTIONS
         public Question GetQuestionFromDataRow(DataRow row)
         {
-            string question = row["Question"].ToString();
-            int time_limit = (int)row["AnswerTimeLimit"];
+            string question = row["QuestionText"].ToString();
+            int time_limit = (int)row["TimeLimit"];
             int quiz_id = (int)row["QuizID"];
-            int id = (int)row["IDQuestion"];
+            int id = (int)row["ID"];
 
             return new Question(question, quiz_id, time_limit, id);
         }
@@ -96,12 +96,13 @@ namespace PRAQuiz.Repo
         //GET QUIZ
         public Quiz GetQuizFromDataRow(DataRow row)
         {
+            int id = (int)row["ID"];
             string title = row["Title"].ToString();
-            int timesplayed = (int)row["TimesPlayed"];
+        
             int Author_id = (int)row["AuthorID"];
-            int id = (int)row["IDQuiz"];
+           
 
-            return new Quiz(id, title, Author_id, timesplayed);
+            return new Quiz(id, title, Author_id);
         }
         public ISet<Quiz> GetQuizes()
         {
@@ -121,69 +122,49 @@ namespace PRAQuiz.Repo
         public Player GetPlayerFromDataRow(DataRow row)
         {
             string nickname = row["Nickname"].ToString();
-            int id = (int)row["IDPlayer"];
+            int id = (int)row["ID"];
             return new Player(nickname, id);
         }
-        public ISet<Player> GetPlayers()
-        {
-            ISet<Player> players = new HashSet<Player>();
-            DataTable tblPlayer = DAL.DAL.ExecuteReader("GetPlayers", DAL.CommandType.StoranaProcedura);
+        //public ISet<Player> GetPlayers()
+        //{
+        //    ISet<Player> players = new HashSet<Player>();
+        //    DataTable tblPlayer = DAL.DAL.ExecuteReader("GetPlayers", DAL.CommandType.StoranaProcedura);
 
-            foreach (DataRow row in tblPlayer.Rows)
-            {
-                players.Add(GetPlayerFromDataRow(row));
-            }
+        //    foreach (DataRow row in tblPlayer.Rows)
+        //    {
+        //        players.Add(GetPlayerFromDataRow(row));
+        //    }
 
-            return players;
-        }
+        //    return players;
+        //}
 
         //GET GAMES
-        public Game GetGameFromDataRow(DataRow row)
-        {
+        //public Game GetGameFromDataRow(DataRow row)
+        //{
 
-            DateTime datetime = DateTime.Parse(row["DatePlayed"].ToString());
-            int quiz_id = (int)row["QuizID"];
-            string gamepin = row["GamePIN"].ToString();
-            int id = (int)row["IDGame"];
+        //    DateTime datetime = DateTime.Parse(row["StartTime"].ToString());
+        //    int quiz_id = (int)row["QuizID"];
+        //    string gamepin = row["GamePIN"].ToString();
+        //    int id = (int)row["ID"];
 
-            return new Game(quiz_id, gamepin, datetime, id);
+        //    return new Game(quiz_id, gamepin, datetime, id);
 
-        }
-        public ISet<Game> GetGames()
-        {
-            ISet<Game> games = new HashSet<Game>();
-            DataTable tblGame = DAL.DAL.ExecuteReader("GetGames", DAL.CommandType.StoranaProcedura);
+        //}
+        //public ISet<Game> GetGames()
+        //{
+        //    ISet<Game> games = new HashSet<Game>();
+        //    DataTable tblGame = DAL.DAL.ExecuteReader("GetGames", DAL.CommandType.StoranaProcedura);
 
-            foreach (DataRow row in tblGame.Rows)
-            {
-                games.Add(GetGameFromDataRow(row));
-            }
+        //    foreach (DataRow row in tblGame.Rows)
+        //    {
+        //        games.Add(GetGameFromDataRow(row));
+        //    }
 
-            return games;
-        }
-        private Scores GetScoreFromDataRow(DataRow row)
-        {
-            int id = (int)row["IDScore"];
-            int player_id = (int)row["PlayerID"];
-            int game_id = (int)row["GameID"];
-            int questions_played = (int)row["QuestionsPlayed"];
-            int accuracy = (int)row["Accuracy"];
-            int score = (int)row["Score"];
+        //    return games;
+        //}
+     
 
-            return new Scores(id, player_id, game_id, questions_played, accuracy, score);
-        }
-
-        public ISet<Scores> GetScores()
-        {
-            ISet<Scores> scores = new HashSet<Scores>();
-            DataTable tblScores = DAL.DAL.ExecuteReader("GetScores", DAL.CommandType.StoranaProcedura);
-
-            foreach (DataRow row in tblScores.Rows)
-            {
-                scores.Add(GetScoreFromDataRow(row));
-            }
-            return scores;
-        }
+    
 
         public Author GetAuthor(int id)
         {
@@ -244,7 +225,7 @@ namespace PRAQuiz.Repo
         {
             a.ID = DAL.DAL.AddEntity("AddAuthor",
                   new Parameter { Naziv = "@Email", Value = a.Email },
-                  new Parameter { Naziv = "@Passw", Value = a.Password },
+                  new Parameter { Naziv = "@Password", Value = a.Password },
                   new Parameter { Naziv = "@FirstName", Value = a.FirstName },
                   new Parameter { Naziv = "@LastName", Value = a.LastName });
         }
@@ -275,7 +256,7 @@ namespace PRAQuiz.Repo
         public void AddAnswer(Answer a)
         {
             a.ID = DAL.DAL.AddEntity("AddAnswer",
-                new Parameter { Naziv = "@Answer", Value = a.Text },
+                new Parameter { Naziv = "@AnswerText", Value = a.Text },
                 new Parameter { Naziv = "@Correct", Value = a.Correct },
                 new Parameter { Naziv = "@QuestionID", Value = a.questionID }
                 );
@@ -284,8 +265,8 @@ namespace PRAQuiz.Repo
         public void AddQuestion(Question q)
         {
             q.ID = DAL.DAL.AddEntity("AddQuestion",
-               new Parameter { Naziv = "@Question", Value = q.Text },
-               new Parameter { Naziv = "@AnswerTimeLimit", Value = q.AnswerTimeLimit },
+               new Parameter { Naziv = "@QuestionText", Value = q.QuestionText },
+               new Parameter { Naziv = "@TimeLimit", Value = q.TimeLimit },
                new Parameter { Naziv = "@QuizID", Value = q.QuizID }
                );
         }
@@ -364,9 +345,9 @@ namespace PRAQuiz.Repo
         public void UpdateQuestion(Question q)
         {
             DAL.DAL.ExecuteCommand("UpdateQuestion",
-               new Parameter { Naziv = "@question", Value = q.Text },
+               new Parameter { Naziv = "@question", Value = q.QuestionText },
                new Parameter { Naziv = "@id", Value = q.ID },
-               new Parameter { Naziv = "@timelimit", Value = q.AnswerTimeLimit },
+               new Parameter { Naziv = "@timelimit", Value = q.TimeLimit },
                new Parameter { Naziv = "@quizid", Value = q.QuizID }
                );
         }

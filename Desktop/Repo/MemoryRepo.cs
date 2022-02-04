@@ -26,7 +26,7 @@ namespace PRAQuiz.Repo
 
         private void FillItems()
         {
-            players = r.GetPlayers();
+            //players = r.GetPlayers();
             answers = r.GetAnswers();
             questions = r.GetQuestions();
             questions.ToList().ForEach(qu => qu.Answers = r.GetQuestionAnswers(qu.ID));
@@ -34,8 +34,8 @@ namespace PRAQuiz.Repo
             Authors.ToList().ForEach(a => a.Quizes = r.GetAuthorsQuizes(a.ID));
             quizes = r.GetQuizes();
             quizes.ToList().ForEach(q => q.Questions = r.GetQuizQuestions(q.ID));
-            scores = r.GetScores();
-            games = r.GetGames();
+            //scores = r.GetScores();
+            //games = r.GetGames();
         }
 
         public void AddAnswer(Answer a)
