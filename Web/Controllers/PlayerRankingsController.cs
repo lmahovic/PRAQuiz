@@ -27,6 +27,7 @@ namespace Web.Controllers
             var playerRankings = await _context.PlayerRankings
                 .Include(x => x.Player)
                 .Where(x => x.Player.GameId == gameId)
+                .OrderBy(x=>x.Ranking)
                 .ToListAsync();
 
             var playerRankingViewModels = _mapper.Map<List<PlayerRankingViewModel>>(playerRankings);
